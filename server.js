@@ -1,12 +1,12 @@
 const express = require('express');
-// const courseRoutes=require('./routes/courseRoutes')
+const courseRoutes=require('./routes/courseRoutes')
 const studrouter=require("./routes/student")
 const videoRoutes=require("./routes/videoRouters")
 
 const app=express();
 
 app.use(express.json());
-// app.use('/courses',courseRoutes)
+app.use('/courses',courseRoutes)
 app.use("/student",studrouter)
 app.use("/video",videoRoutes)
 
