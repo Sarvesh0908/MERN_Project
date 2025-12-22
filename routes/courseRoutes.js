@@ -4,6 +4,19 @@ const result=require("../utils/result")
 const express=require('express')
 const router=express.Router()
 
+
+router.get("/active_course",(req,res)=>{
+    const sql = 'select *  from courses where start_date <=  CURRENT_DATE AND end_date >= CURRENT_DATE '
+    pool.query(sql,(err,data)=>{
+         if(err){
+            res.send(result.createResult(err,null))
+         }
+         res.send(result.createResult(null,data))
+    })
+})
+
+
+
 router.get('/',(req,res)=>{
     const sql='SELECT * FROM courses'
 
