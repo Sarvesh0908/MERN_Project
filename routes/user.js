@@ -25,17 +25,17 @@ router.post('/signin', (req, res) => {
         else{
             const user=data[0]
             const payload={
-                uid : user.uid,
-                email : user.email
+                email : user.email,
+                role: user.role
             }
             const token = jwt.sign(payload,config.SECRET)
 
             const userData= {
-                name : user.name,
-                mobile : user.mobile,
+                email : user.email,
+                role : user.role,
                 token
             }
-            res.send(result.createResult(null,data))
+            res.send(result.createResult(null,userData))
         }
     })
 })
@@ -43,9 +43,9 @@ router.post('/signin', (req, res) => {
 router.post('/signup', (req,res) => {
 const {email,password,role} =req.body
 const hashedPassword= cryptojs.SHA256(password).toString()
-const sql="INSERT INTO users(email,password,role) VALUES (?,?,?)"
+const sql="INSERT INTO user(email,password,role) VALUES (?,?,?)"
 
-pool.query(sql,[name,email,hashedPassword,mobile],(err,data)=>{
+pool.query(sql,[email,hashedPassword,role],(err,data)=>{
     res.send(result.createResult(err,data))
 })
 })
