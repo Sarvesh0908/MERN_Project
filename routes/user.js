@@ -12,7 +12,7 @@ const router = express.Router()
 router.post('/signin', (req, res) => {
     const { email, password } = req.body
 
-    const sql = `SELECT * FROM user WHERE email=? AND password=?`
+    const sql = `SELECT * FROM users WHERE email=? AND password=?`
     const hashedPassword = cryptojs.SHA256(password).toString()
     pool.query(sql, [ email, hashedPassword], (err, data) => {
         if(err){
@@ -25,8 +25,9 @@ router.post('/signin', (req, res) => {
         else{
             const user=data[0]
             const payload={
-                uid : user.uid,
-                email : user.email
+                
+                email : user.email,
+                role:user.role
             }
             const token = jwt.sign(payload,config.SECRET)
 
@@ -35,7 +36,7 @@ router.post('/signin', (req, res) => {
                 mobile : user.mobile,
                 token
             }
-            res.send(result.createResult(null,data))
+            res.send(result.createResult(null,userData))
         }
     })
 })
@@ -45,7 +46,7 @@ const {email,password,role} =req.body
 const hashedPassword= cryptojs.SHA256(password).toString()
 const sql="INSERT INTO users(email,password,role) VALUES (?,?,?)"
 
-pool.query(sql,[name,email,hashedPassword,mobile],(err,data)=>{
+pool.query(sql,[email,hashedPassword,role],(err,data)=>{
     res.send(result.createResult(err,data))
 })
 })
