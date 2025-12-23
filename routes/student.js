@@ -29,7 +29,7 @@ router.put("/change_pass",(req,res)=>{
     const {new_pass,conferm_pass,email}=req.body
     if(new_pass==conferm_pass){
     const hashedPassword = cryptojs.SHA256(conferm_pass).toString()
-    const sql="UPDATE user SET password=? WHERE email=?"
+    const sql="UPDATE users SET password=? WHERE email=?"
     pool.query(sql,[hashedPassword,email],(err, data) => {
     res.send(result.createResult(err,data))
   })
