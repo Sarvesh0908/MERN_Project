@@ -1,5 +1,6 @@
 const pool=require('../db/pool')
 const result=require("../utils/result")
+const {checkAuthorization}=require("../utils/auth")
 
 const express=require('express')
 const router=express.Router()
@@ -29,7 +30,7 @@ router.get('/',(req,res)=>{
 })
 
 
-router.post('/add',(req,res)=>{
+router.post('/add',checkAuthorization,(req,res)=>{
     const {course_name, description, fees, start_date, end_date, video_expiry_days } =req.body
     const sql='INSERT INTO courses (course_name, description, fees, start_date, end_date, video_expiry_days) VALUES (?,?,?,?,?,?)'
 
@@ -44,7 +45,7 @@ router.post('/add',(req,res)=>{
 
 })
 
-router.put('/update/:id',(req,res)=>{
+router.put('/update/:id',checkAuthorization,(req,res)=>{
     const {course_id} =req.params
     const {course_name, description, fees, start_date, end_date, video_expiry_days } =req.body
     const sql="UPDATE COURSES SET courses_name=?,description=?,fees=?,start_date=?,end_date=?,video_expiry_days=? WHERE course_id=?"
@@ -59,7 +60,7 @@ router.put('/update/:id',(req,res)=>{
 
 })
 
-router.delete('/delete/:courseid',(req,res)=>{
+router.delete('/delete/:courseid',checkAuthorization,(req,res)=>{
     const c_id=req.params.courseid
     const sql='DELETE FROM courses WHERE course_id=?'
     pool.query(sql,[c_id],(err,data)=>{
