@@ -3,7 +3,7 @@ const config = require("./config")
 const result = require("./result")
 
 function authUser(req,res,next){
-    const allowedUrl = ["/user/signup","/user/signin","/courses/all-courses"]
+    const allowedUrl = ["/user/signup","/user/signin","/courses"]
     if(allowedUrl.includes(req.url)) return next();
     else{
         const token = req.headers.token
@@ -36,3 +36,16 @@ function authUser(req,res,next){
 
     }
 }
+
+
+function checkAuthorization(req,res,next){
+    const role=req.header.role
+    console.log("role=",role)
+    if(role==='admin'){
+        return next();
+
+    }
+    result.createResult("unauthorized access")
+}
+
+module.exports ={authUser,checkAuthorization}
