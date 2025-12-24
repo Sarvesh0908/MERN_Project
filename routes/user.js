@@ -54,7 +54,7 @@ pool.query(sql,[email,hashedPassword,role],(err,data)=>{
 
 router.get('/', (req, res) => {
     const email = req.headers.email
-    const sql = `SELECT * FROM users WHERE email = ?`
+    const sql = `SELECT * FROM user WHERE email = ?`
     pool.query(sql, [email], (error, data) => {
         res.send(result.createResult(error, data))
     })
@@ -62,7 +62,7 @@ router.get('/', (req, res) => {
 
 router.delete('/', (req, res) => {
     const uid = req.headers.uid
-    const sql = `DELETE FROM users WHERE uid = ?`
+    const sql = `DELETE FROM user WHERE uid = ?`
     pool.query(sql, [uid], (error, data) => {
         res.send(result.createResult(error, data))
     })
