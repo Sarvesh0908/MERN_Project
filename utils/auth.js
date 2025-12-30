@@ -4,6 +4,7 @@ const result = require("./result")
 
 function authUser(req,res,next){
     const allowedUrl = ["/user/signup","/user/signin","/courses"]
+    console.log(req.url)
     if(allowedUrl.includes(req.url)) return next();
     else{
         const token = req.headers.token
@@ -17,6 +18,7 @@ function authUser(req,res,next){
             
             req.headers.email = payload.email
             req.headers.role = payload.role
+            console.log(req.headers.role)
 
             return next();
 
@@ -39,7 +41,8 @@ function authUser(req,res,next){
 
 
 function checkAuthorization(req,res,next){
-    const role=req.header.role
+    const role=req.headers.role
+    
     console.log("role=",role)
     if(role==='admin'){
         return next();

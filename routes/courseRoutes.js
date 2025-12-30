@@ -4,6 +4,7 @@ const {checkAuthorization}=require("../utils/auth")
 
 const express=require('express')
 const router=express.Router()
+router.use(express.json());
 
 
 router.get("/active_course",(req,res)=>{
@@ -30,8 +31,10 @@ router.get('/',(req,res)=>{
 })
 
 
-router.post('/add',checkAuthorization,(req,res)=>{
+router.post('/add',(req,res)=>{
+    console.log(req.body)
     const {course_name, description, fees, start_date, end_date, video_expiry_days } =req.body
+    console.log(course_name)
     const sql='INSERT INTO courses (course_name, description, fees, start_date, end_date, video_expiry_days) VALUES (?,?,?,?,?,?)'
 
     pool.query(sql,[course_name, description, fees,start_date, end_date, video_expiry_days],(err,data)=>{

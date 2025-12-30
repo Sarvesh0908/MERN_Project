@@ -4,7 +4,7 @@ const pool=mysql.createPool({
     host: 'localhost',
     user:'root',
    // password:'manager',
-     password:'Aditya@2612',
+     password:'manager',
     database:'mern_db'
 })
 
