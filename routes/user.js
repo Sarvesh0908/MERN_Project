@@ -41,11 +41,11 @@ router.post('/signin', (req, res) => {
 })
 
 router.post('/signup', (req,res) => {
-const {email,password,role} =req.body
+const {email,password} =req.body
 const hashedPassword= cryptojs.SHA256(password).toString()
-const sql="INSERT INTO user(email,password,role) VALUES (?,?,?)"
+const sql="INSERT INTO user(email,password) VALUES (?,?)"
 
-pool.query(sql,[email,hashedPassword,role],(err,data)=>{
+pool.query(sql,[email,hashedPassword],(err,data)=>{
     res.send(result.createResult(err,data))
 })
 })
