@@ -6,6 +6,8 @@ const admin=require("./routes/admin")
 const user=require("./routes/user")
 const cors =require('cors')
 
+const cors=require('cors')
+
 const {authUser} =require("./utils/auth")
 
 
