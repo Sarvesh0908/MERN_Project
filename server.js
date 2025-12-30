@@ -4,16 +4,21 @@ const studrouter=require("./routes/student")
 const videoRoutes=require("./routes/videoRouters")
 const admin=require("./routes/admin")
 const user=require("./routes/user")
-const cors =require("cors")
+const cors =require('cors')
+
+const cors=require('cors')
+
 const {authUser} =require("./utils/auth")
 
 
 const app=express();
+app.use(cors())
 app.use(authUser);
 app.use(express.json());
-app.use(cors())
 
-app.use('/user',user)
+
+
+app.use("/user",user)
 app.use('/courses',courseRoutes)
 app.use("/student",studrouter)
 app.use("/video",videoRoutes)
