@@ -36,6 +36,7 @@ router.post('/signin', (req, res) => {
                 role : user.role,
                 token
             }
+            
             res.send(result.createResult(null,userData))
         }
     })
