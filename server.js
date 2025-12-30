@@ -5,10 +5,13 @@ const videoRoutes=require("./routes/videoRouters")
 const admin=require("./routes/admin")
 const user=require("./routes/user")
 
+const cors=require('cors')
+
 const {authUser} =require("./utils/auth")
 
 
 const app=express();
+app.use(cors())
 app.use(authUser);
 app.use(express.json());
 app.use("/user",user)

@@ -1,13 +1,24 @@
 const pool=require('../db/pool')
 const result=require("../utils/result")
+
 const {checkAuthorization}=require("../utils/auth")
 
 const express=require('express')
 const router=express.Router()
 
+router.get("/upcomming",(req,res)=>{
+    const sql = 'select *  from courses where start_date >  CURRENT_DATE '
+    pool.query(sql,(err,data)=>{
+         if(err){
+            res.send(result.createResult(err,null))
+         }
+         res.send(result.createResult(null,data))
+    })
+})
+
 
 router.get("/active_course",(req,res)=>{
-    const sql = 'select *  from courses where start_date <=  CURRENT_DATE AND end_date >= CURRENT_DATE '
+    const sql = 'select *  from courses where start_date <=  CURRENT_DATE AND  CURRENT_DATE <= end_date'
     pool.query(sql,(err,data)=>{
          if(err){
             res.send(result.createResult(err,null))
@@ -45,11 +56,12 @@ router.post('/add',checkAuthorization,(req,res)=>{
 
 })
 
-router.put('/update/:id',checkAuthorization,(req,res)=>{
-    const {course_id} =req.params
+router.put('/update/:courseid',checkAuthorization,(req,res)=>{
+    const c_id=req.params.courseid
+    console.log(c_id);
     const {course_name, description, fees, start_date, end_date, video_expiry_days } =req.body
-    const sql="UPDATE COURSES SET courses_name=?,description=?,fees=?,start_date=?,end_date=?,video_expiry_days=? WHERE course_id=?"
-    pool.query(sql,[course_name, description, fees,start_date, end_date, video_expiry_days,course_id],(err,data)=>{
+    const sql="UPDATE COURSES SET course_name=?,description=?,fees=?,start_date=?,end_date=?,video_expiry_days=? WHERE course_id=?"
+    pool.query(sql,[course_name, description, fees,start_date, end_date, video_expiry_days,c_id],(err,data)=>{
     if(err){
         res.send(result.createResult(err,null))
     }            

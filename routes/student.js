@@ -15,6 +15,16 @@ router.post("/register-to-course", (req, res) => {
    
         });
     });
+    router.get('/all-stu',(req,res)=>{
+    const sql='SELECT s.reg_no, s.name, s.email, s.mobile_no, c.course_name FROM students s JOIN courses c ON s.course_id = c.course_id'
+
+    pool.query(sql,(err,data)=>{
+        if(err){
+            res.send(result.createResult(err,null))
+        }
+        res.send(result.createResult(null,data))
+    })
+})
 
 
 router.get("/my-courses", (req, res) => {
@@ -47,5 +57,6 @@ router.get("/my-courses_with_video",(req,res)=>{
     res.send(result.createResult(err,data))
   })
 })
+
 
 module.exports=router
