@@ -57,6 +57,18 @@ router.get("/my-courses_with_video",(req,res)=>{
     res.send(result.createResult(err,data))
   })
 })
+router.get('/show', (req, res) => {
+    const email = req.headers.email;  
+    const sql = `
+        SELECT name, email, mobile_no 
+        FROM students 
+        WHERE email = ?
+    `;
+    pool.query(sql, [email], (error, data) => {
+        res.send(result.createResult(error, data));
+    });
+});
+
 
 
 module.exports=router
