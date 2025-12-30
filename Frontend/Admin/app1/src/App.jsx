@@ -1,4 +1,6 @@
 import Signin from "./pages/Signin"
+import Home from "./pages/Home"
+
 import { Route,Routes,Navigate } from "react-router"
 import { createContext,useState } from "react";
 
@@ -15,6 +17,8 @@ function App() {
 <LoginContext.Provider value={{ loginStatus, setLoginStatus }}>
 <Routes>
   <Route path="/" element={<Signin />} />
+  <Route path="/home" element={loginStatus ? <Home /> : <Navigate to="/"/> } />
+
 </Routes>
 
 
