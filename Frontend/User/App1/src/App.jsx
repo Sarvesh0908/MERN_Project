@@ -10,6 +10,9 @@ import { Register } from "./pages/register_to_course"
 >>>>>>> c295f0eb4afc4b64b9f03030b97ef39e774d04ee
 import Login from './Pages/Login'
 import Signup from './Pages/Signup'
+import profile from './Pages/Profile'
+
+
 
 
 <<<<<<< HEAD
@@ -37,6 +40,7 @@ function App() {
         
         <Route path ="/Login" element={<Login/>} />
      <Route path ="/Signup"element={<Signup/>} />
+      <Route path ="/profile" element={<profile/>} />
 
 <<<<<<< HEAD
 >>>>>>> 4b0439dd301822e80d8499ddebb16e5ac212b4d1
