@@ -24,6 +24,7 @@ export async function getAllCourses(token){
 
 }
 
+<<<<<<< HEAD
 export async function SignupUser(name, email, password, mobile) {
     const URL = config.BASE_URL + '/user/signup'
     const body = { name, email, password, mobile }
@@ -39,3 +40,5 @@ export async function getUserProfile(email, token) {
     return result.data
    
 }
+=======
+>>>>>>> c0191c29b5df85c25b94eae9a875870a9f79775b
