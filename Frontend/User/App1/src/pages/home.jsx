@@ -50,7 +50,7 @@ export default function Home() {
       <div className="container">
         <div className="row g-4">
           {course.map((e, index) => (
-            <div key={index} className="col-lg-4 col-md-6 col-sm-12">
+            <div key={index} className="col-lg-3 col-md-4 col-sm-12">
               <div
                 className="card h-100 border-0 shadow-sm"
                 style={{ transition: "0.3s" }}
