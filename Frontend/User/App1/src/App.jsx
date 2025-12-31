@@ -1,8 +1,9 @@
 import { Route, Routes, BrowserRouter } from "react-router"
-import Home from "./pages/home"
-import { Register } from "./pages/register_to_course"
-import Login from './Pages/Login'
-import Signup from './Pages/Signup'
+import Home from "./pages/Home";
+import { Register } from "./pages/register_to_course";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+
 
 
 
