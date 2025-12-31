@@ -17,7 +17,7 @@ export async function SignupUser(name, email, password, mobile) {
 }
 
 export async function getAllCourses(token){
-    const url=config.BASE_URL+'/courses/allcourses'
+    const url=config.BASE_URL+'/courses'
     const headers={token}
     const result= await axios.get(url,{headers})
     return result.data
