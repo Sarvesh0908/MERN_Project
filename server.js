@@ -16,7 +16,6 @@ app.use(authUser);
 app.use(express.json());
 
 
-
 app.use("/user",user)
 app.use('/courses',courseRoutes)
 app.use("/student",studrouter)
