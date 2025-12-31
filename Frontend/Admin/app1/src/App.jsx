@@ -1,17 +1,23 @@
 import Signin from "./pages/Signin"
 import Home from "./pages/Home"
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> d2c2b60766b05e58d645cb15ae2e46992afd6863
 import AllStudents from "./pages/AllStudents"
 import UpdateCourse from "./pages/updateCourses" 
 import AddCourses from "./pages/AddCourses"
 import AllCourses from './pages/AllCourses';
 
+<<<<<<< HEAD
 =======
 import VideosByCourse from "./pages/VideoByCourse"
 import AllVideo from "./pages/AllVideo"
 import AddVideo from "./pages/AddVideo"
 import UpdateVideo from "./pages/updateVideo"
 >>>>>>> f1bc5162619a0d8f4df61790f88c3e0845b9d7ba
+=======
+>>>>>>> d2c2b60766b05e58d645cb15ae2e46992afd6863
 
 import { Route, Routes, Navigate } from "react-router"
 import { createContext, useState } from "react";
@@ -27,6 +33,9 @@ function App() {
   return (
     <>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> d2c2b60766b05e58d645cb15ae2e46992afd6863
 <LoginContext.Provider value={{ loginStatus, setLoginStatus }}>
 <Routes>
   <Route path="/" element={<Signin />} />
@@ -37,6 +46,7 @@ function App() {
   <Route path='/allcourse' element={loginStatus ? <AllCourses/> : <Navigate to="/"/>}/>
        
 
+<<<<<<< HEAD
 </Routes>
 =======
       <LoginContext.Provider value={{ loginStatus, setLoginStatus }}>
@@ -50,6 +60,8 @@ function App() {
         </Routes>
 >>>>>>> f1bc5162619a0d8f4df61790f88c3e0845b9d7ba
 
+=======
+>>>>>>> d2c2b60766b05e58d645cb15ae2e46992afd6863
 
 
       </LoginContext.Provider>
