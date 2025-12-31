@@ -4,14 +4,14 @@ import { useNavigate } from "react-router";
 import { getUserProfile } from "../services/userService";
 import { toast, ToastContainer } from "react-toastify";
 
-function Profile() {
+export function Profile() {
   const [user, setUser] = useState({ name: "", email: "", mobile: "" });
   const token = sessionStorage.getItem("token");
   const navigate = useNavigate();
 
   useEffect(() => {
     if (!token) {
-      toast.warn("Login required");
+      toast.warn("Login required"); 
       navigate("/");
       return;
     }

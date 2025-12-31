@@ -1,13 +1,11 @@
 import {Route,Routes,BrowserRouter} from "react-router"
+
 import Home from "./pages/home"
 import { Register } from "./pages/register_to_course"
+
 import Login from './Pages/Login'
 import Signup from './Pages/Signup'
-import profile from './Pages/Profile'
-
-
-
-
+import Profile from './Pages/Profile'
 
 function App() {
   
@@ -17,13 +15,16 @@ function App() {
        
     <BrowserRouter>
   <Routes>
+
+     
+
       <Route path="/home" element={<Home />} />
       <Route path="/register/:id" element={<Register />} />
+
         
         <Route path ="/Login" element={<Login/>} />
      <Route path ="/Signup"element={<Signup/>} />
-      <Route path ="/profile" element={<profile/>} />
-
+      <Route path ="/profile" element={<Profile/>} />
       </Routes>
   </BrowserRouter>
   </>
