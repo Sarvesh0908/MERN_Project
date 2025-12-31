@@ -1,3 +1,6 @@
+import { Route, Routes, BrowserRouter } from "react-router"
+import {Route,Routes,BrowserRouter} from "react-router"
+
 import Home from "./pages/home"
 import Profile from "./pages/profile"
 import Login from "./pages/Login"
@@ -10,7 +13,7 @@ import ChangePassword from "./pages/changepass"
 
 
 function App() {
-  
+
 
   return (
     <>
