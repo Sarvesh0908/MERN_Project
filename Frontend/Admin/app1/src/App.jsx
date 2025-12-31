@@ -1,5 +1,8 @@
 import Signin from "./pages/Signin"
 import Home from "./pages/Home"
+import AllStudents from "./pages/AllStudents"
+import UpdateCourse from "./pages/updateCourses" 
+
 
 import { Route,Routes,Navigate } from "react-router"
 import { createContext,useState } from "react";
@@ -18,6 +21,9 @@ function App() {
 <Routes>
   <Route path="/" element={<Signin />} />
   <Route path="/home" element={loginStatus ? <Home /> : <Navigate to="/"/> } />
+  <Route path='/allstudents' element={loginStatus ? <AllStudents/> : <Navigate to="/"/>}/>
+  <Route path="/updatecourse/:id" element={loginStatus ? <UpdateCourse /> : <Navigate to="/"/>} />
+
 
 </Routes>
 
