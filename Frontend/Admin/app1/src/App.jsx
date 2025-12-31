@@ -4,16 +4,16 @@ import AllStudents from "./pages/AllStudents"
 import UpdateCourse from "./pages/updateCourses" 
 
 
-import { Route,Routes,Navigate } from "react-router"
-import { createContext,useState } from "react";
+import { Route, Routes, Navigate } from "react-router"
+import { createContext, useState } from "react";
 
 export const LoginContext = createContext()
 
 function App() {
   const [loginStatus, setLoginStatus] = useState(
-  sessionStorage.getItem("token") ? true : false
-);
-  
+    sessionStorage.getItem("token") ? true : false
+  );
+
 
   return (
     <>
@@ -25,12 +25,10 @@ function App() {
   <Route path="/updatecourse/:id" element={loginStatus ? <UpdateCourse /> : <Navigate to="/"/>} />
 
 
-</Routes>
 
 
+      </LoginContext.Provider>
 
-</LoginContext.Provider>
-      
     </>
   )
 }
