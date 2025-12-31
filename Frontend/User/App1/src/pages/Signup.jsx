@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
-import { signupuser } from "../services/userService";
+import { SignupUser } from "../services/userService";
 import { ToastContainer, toast } from "react-toastify";
 
 function Signup() {
@@ -34,7 +34,7 @@ function Signup() {
     }
 
     if(confirmpassword===password){
-    const result = await signupuser(email, password);
+    const result = await SignupUser(email, password);
     if (result.status === "success") {
       toast.success("Signup successful");
       setTimeout(() => navigate("/"), 1200);
