@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import dayjs from "dayjs";
 import Navbar from "../components/Navbar";
 import { getVideosByCourse } from "../services/VideoService";
-import './VideoByCourse.css';
+import './VideosByCourse.css';
 
 function VideosByCourse() {
   const { course_id } = useParams();
