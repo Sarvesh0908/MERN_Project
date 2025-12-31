@@ -2,6 +2,8 @@ import Signin from "./pages/Signin"
 import Home from "./pages/Home"
 import AllStudents from "./pages/AllStudents"
 import UpdateCourse from "./pages/updateCourses" 
+import AddCourses from "./pages/AddCourses"
+import AllCourses from './pages/AllCourses';
 
 
 import { Route,Routes,Navigate } from "react-router"
@@ -23,7 +25,9 @@ function App() {
   <Route path="/home" element={loginStatus ? <Home /> : <Navigate to="/"/> } />
   <Route path='/allstudents' element={loginStatus ? <AllStudents/> : <Navigate to="/"/>}/>
   <Route path="/updatecourse/:id" element={loginStatus ? <UpdateCourse /> : <Navigate to="/"/>} />
-
+  <Route path='/addcourse' element={loginStatus ? <AddCourses/> : <Navigate to="/"/>}/>
+  <Route path='/allcourse' element={loginStatus ? <AllCourses/> : <Navigate to="/"/>}/>
+       
 
 </Routes>
 
