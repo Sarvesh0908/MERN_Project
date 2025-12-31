@@ -3,6 +3,9 @@ import Home from "./pages/home"
 import { Register } from "./pages/register_to_course"
 import Login from './Pages/Login'
 import Signup from './Pages/Signup'
+import profile from './Pages/Profile'
+
+
 
 
 
@@ -19,6 +22,7 @@ function App() {
         
         <Route path ="/Login" element={<Login/>} />
      <Route path ="/Signup"element={<Signup/>} />
+      <Route path ="/profile" element={<profile/>} />
 
       </Routes>
   </BrowserRouter>
