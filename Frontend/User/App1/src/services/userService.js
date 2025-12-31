@@ -31,11 +31,3 @@ export async function getUserProfile(email, token) {
     return result.data
    
 }
-export async function changePassword(token,email, new_pass, conferm_pass) {
-  const url=config.BASE_URL+'/student/change_pass'
-    const headers={token}
-    console.log("token",token)
-    const body= { email, new_pass, conferm_pass }
-    const result= await axios.put(url,body,{headers})
-    return result.data
-  }
