@@ -1,11 +1,7 @@
 import { Route, Routes, BrowserRouter } from "react-router"
-
-import {Route,Routes,BrowserRouter} from "react-router"
-
 import Home from "./pages/home"
 import Profile from "./pages/profile"
 import Login from "./pages/Login"
-import {Route,Routes,BrowserRouter} from "react-router"
 import Signup from "./pages/Signup"
 import Mycourses from './pages/mycourses';
 import { Register } from "./pages/register_to_course"

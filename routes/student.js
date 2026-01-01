@@ -2,8 +2,10 @@ const express = require("express")
 const pool = require("../db/pool")
 const result=require("../utils/result")
 const cryptojs=require("crypto-js")
-const {authUser} = require("../utils/auth");
+const {checkAuthorization}=require("../utils/auth")
+
 const router = express.Router()
+
 
 router.post("/register-to-course", (req, res) => {
   const { courseId, email, name, mobileNo } = req.body;
@@ -15,9 +17,19 @@ router.post("/register-to-course", (req, res) => {
    
         });
     });
+    router.get('/all-stu',(req,res)=>{
+    const sql='SELECT s.reg_no, s.name, s.email, s.mobile_no, c.course_name FROM students s JOIN courses c ON s.course_id = c.course_id'
+
+    pool.query(sql,(err,data)=>{
+        if(err){
+            res.send(result.createResult(err,null))
+        }
+        res.send(result.createResult(null,data))
+    })
+})
 
 
-router.get("/my-courses",authUser,(req, res) => {
+router.get("/my-courses",(req, res) => {
     const email = req.headers.email;
     const sql = "select s.name,s.email,s.mobile_no, c.course_id,c.course_name,c.description,c.fees,c.start_date,c.end_date from students s INNER JOIN courses c ON c.course_id=s.course_id WHERE email=?"
     pool.query(sql,[email],(err, data) => {
@@ -40,9 +52,9 @@ else{
 })
 
 
-router.get("/my-courses_with_video",authUser,(req,res)=>{
-    const email = req.headers.email;
-    const sql="SELECT c.course_name, v.title, v.youtube_url,v.description,v.added_at FROM students s JOIN courses c ON s.course_id = c.course_id JOIN video v ON v.course_id = c.course_id WHERE s.email = ?"
+router.get("/my-courses_with_video",(req,res)=>{
+    const email=req.headers.email
+    const sql="SELECT c.course_name, v.title, v.youtube_url FROM students s JOIN courses c ON s.course_id = c.course_id JOIN video v ON v.course_id = c.course_id WHERE s.email = ?"
     pool.query(sql,[email],(err, data) => {
     res.send(result.createResult(err,data))
   })

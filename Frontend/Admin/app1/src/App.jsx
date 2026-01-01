@@ -8,7 +8,7 @@ import AllCourses from './pages/AllCourses';
 
 
 import VideosByCourse from "./pages/VideosByCourse"
-import AllVideo from "./pages/AllVideo"
+import AllVideo from "./pages/Allvideo"
 import AddVideo from "./pages/AddVideo"
 import UpdateVideo from "./pages/updateVideo"
 
