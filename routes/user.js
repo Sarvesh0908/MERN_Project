@@ -14,7 +14,6 @@ router.post('/signin', (req, res) => {
 
     const sql = `SELECT * FROM user WHERE email=? AND password=?`
     const hashedPassword = cryptojs.SHA256(password).toString()
-    console.log(hashedPassword)
     pool.query(sql, [ email, hashedPassword], (err, data) => {
         if(err){
             res.send(err);
@@ -36,7 +35,6 @@ router.post('/signin', (req, res) => {
                 role : user.role,
                 token
             }
-            
             res.send(result.createResult(null,userData))
         }
     })
@@ -54,25 +52,21 @@ pool.query(sql,[email,hashedPassword],(err,data)=>{
 
 
 
-router.get('/show', (req, res) => {
+router.get('/', (req, res) => {
     const email = req.headers.email
-    const sql = `SELECT * FROM user WHERE email = ?`
+    const sql = `SELECT * FROM users WHERE email = ?`
     pool.query(sql, [email], (error, data) => {
         res.send(result.createResult(error, data))
     })
 })
 
-router.delete('/delete', (req, res) => {
-    const email = req.headers.email
-    const sql = `DELETE FROM user WHERE email = ?`
-    pool.query(sql, [email], (error, data) => {
+router.delete('/', (req, res) => {
+    const uid = req.headers.uid
+    const sql = `DELETE FROM users WHERE uid = ?`
+    pool.query(sql, [uid], (error, data) => {
         res.send(result.createResult(error, data))
     })
 })
 
 
-
-
-
-
-   module.exports = router
+module.exports = router

@@ -11,6 +11,9 @@ export async function getmycourses(token) {
 export async function getmycourseswithvideo(token) {
     const URL =config.BASE_URL+"/student/my-courses_with_video"
     const headers={token}
-    const response = await axios.get(URL,{headers})
+    console.log(token)
+    const email=sessionStorage.getItem("email")
+    const body={email}
+    const response = await axios.get(URL,body,{headers})
     return response.data
 }

@@ -20,7 +20,7 @@ function Login() {
 
     const result = await loginUser(email, password);
     if (result.status === "success") {
-      sessionStorage.setItem("token", result.data.token);
+      sessionStorage.setItem("token", result.data.token)
       toast.success("Login successful");
       setTimeout(() => navigate("/home"), 1200);
     } else {
